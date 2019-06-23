@@ -51,11 +51,11 @@ contract ERC721CreatorEnumerable is ERC721Enumerable {
     return _createdTokens[creator];
   }
 
-  // function _mint(address account, uint256 value) internal {
-  //   address creator = msg.sender; // Track a Creator's tokens
-  //   _createdTokens[creator].push(value);
-  //   _tokenCreator[value] = creator;
+  function _mint(address account, uint256 value) internal {
+    address creator = msg.sender; // Track a Creator's tokens
+    _createdTokens[creator].push(value);
+    _tokenCreator[value] = creator;
 
-  //   super._mint(account, value);
-  // }
+    super._mint(account, value);
+  }
 }

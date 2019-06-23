@@ -19,33 +19,33 @@ contract('Collectibles', ([creator]) => {
     assert.equal(symbol, "ARK");
   });
 
-  // it.skip('Anyone should be able to mint new Collectibles', async () => {
-  //   const owner = creator;
-  //   const result = await this.collectibles.mintWithTokenURI(owner, TEST_TOKEN_ID, TEST_URI, { from:creator });
-  //   assertEvent(result, {
-  //     event: 'Transfer',
-  //     args: {
-  //       from: ZERO_ADDRESS,
-  //       to: creator,
-  //       tokenId: TEST_TOKEN_ID,
-  //     },
-  //   }, 'A Transfer event is emitted.', 0);
+  it('Anyone should be able to mint new Collectibles', async () => {
+    const owner = creator;
+    const result = await this.collectibles.mintWithTokenURI(owner, TEST_TOKEN_ID, TEST_URI, { from:creator });
+    assertEvent(result, {
+      event: 'Transfer',
+      args: {
+        from: ZERO_ADDRESS,
+        to: creator,
+        tokenId: TEST_TOKEN_ID,
+      },
+    }, 'A Transfer event is emitted.', 0);
 
-  //   // const tokenCreator = await this.collectibles.creatorOf(TEST_TOKEN_ID);
-  //   // assert.equal(tokenCreator, creator);
+    const tokenCreator = await this.collectibles.creatorOf(TEST_TOKEN_ID);
+    assert.equal(tokenCreator, creator);
 
-  //   const tokenOwner = await this.collectibles.ownerOf(TEST_TOKEN_ID);
-  //   assert.equal(tokenOwner, owner);
+    const tokenOwner = await this.collectibles.ownerOf(TEST_TOKEN_ID);
+    assert.equal(tokenOwner, owner);
 
-  //   const URI = await this.collectibles.tokenURI(TEST_TOKEN_ID);
-  //   assert.equal(URI, TEST_URI);
+    const URI = await this.collectibles.tokenURI(TEST_TOKEN_ID);
+    assert.equal(URI, TEST_URI);
 
-  //   // const createdTokens = await this.collectibles.tokensOfCreator(creator);
-  //   // assert.equal(createdTokens.length, 1);
-  //   // assert.equal(createdTokens[0], TEST_TOKEN_ID);
+    const createdTokens = await this.collectibles.tokensOfCreator(creator);
+    assert.equal(createdTokens.length, 1);
+    assert.equal(createdTokens[0], TEST_TOKEN_ID);
 
-  //   const ownedTokens = await this.collectibles.tokensOfOwner(owner);
-  //   assert.equal(ownedTokens.length, 1);
-  //   assert.equal(ownedTokens[0], TEST_TOKEN_ID);    
-  // });  
+    const ownedTokens = await this.collectibles.tokensOfOwner(owner);
+    assert.equal(ownedTokens.length, 1);
+    assert.equal(ownedTokens[0], TEST_TOKEN_ID);    
+  });  
 });
