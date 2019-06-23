@@ -1,13 +1,14 @@
 import React from "react";
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { drizzleConnect } from 'drizzle-react'
 import {
   ContractData,
   ContractForm,
 } from "drizzle-react-components";
-import Collectibles from './components/Collectibles';
+import { Collectibles } from '../components';
 
-export default ({ accounts }) => (
+const Homepage = ({ accounts }) => (
   <div className="App">
     <ToastContainer />
     <div>
@@ -31,3 +32,14 @@ export default ({ accounts }) => (
     </div>
   </div>
 );
+
+const mapStateToProps = state => ({
+  accounts: state.accounts,
+  SimpleStorage: state.contracts.SimpleStorage,
+  TutorialToken: state.contracts.TutorialToken,
+  drizzleStatus: state.drizzleStatus
+})
+
+export default drizzleConnect(Homepage, mapStateToProps)
+
+
