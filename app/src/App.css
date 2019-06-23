@@ -4,7 +4,13 @@
 }
 
 .section {
-  text-align: left;
-  max-width: 720px;
+  text-align: center;
   margin: 4rem auto auto;
+}
+
+.collectible {
+  width: 300px;
+  float: left;
+  margin: 10px;
+  border: 2px solid #eee;
 }

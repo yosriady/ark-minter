@@ -5,15 +5,16 @@ import { LoadingContainer } from "drizzle-react-components";
 import "./App.css";
 
 import drizzleOptions from "./drizzleOptions";
-import MyContainer from "./MyContainer";
+import { Homepage } from "./pages";
 import store from './middleware'
 
+// TODO: react-router
 class App extends Component {
   render() {
     return (
       <DrizzleProvider store={store} options={drizzleOptions}>
         <LoadingContainer>
-          <MyContainer />
+          <Homepage />
         </LoadingContainer>
       </DrizzleProvider>
     );
