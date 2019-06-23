@@ -43,7 +43,18 @@ class ContractForm extends Component {
         break;
       }
     }
+
     this.state = initialState;
+    
+    console.log(this.state);
+
+    // Add support for default values
+    const defaults = this.props.defaults || {};
+
+    console.log(defaults);
+    this.state = Object.assign(this.state, defaults);
+
+    console.log(this.state);
   }
 
   handleSubmit(event) {
@@ -129,6 +140,7 @@ ContractForm.propTypes = {
   contract: PropTypes.string.isRequired,
   method: PropTypes.string.isRequired,
   sendArgs: PropTypes.object,
+  defaults: PropTypes.object,
   labels: PropTypes.arrayOf(PropTypes.string),
   render: PropTypes.func,
 };
