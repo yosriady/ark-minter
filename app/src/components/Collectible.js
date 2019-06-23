@@ -30,16 +30,16 @@ class Collectible extends Component {
     const uri = contract.tokenURI[this.dataKey].value;
 
     return (
-        <Card hoverable cover={<img alt='' src={`https://robohash.org/${this.props.tokenId}?set=set4`} />} style={{ height: 900, width: 200 }}>
+        <Card className="collectible" hoverable cover={<img alt='' src={`https://robohash.org/${this.props.tokenId}?set=set4`} />}>
           <Typography>
-            <Paragraph>
-              {uri} {pendingSpinner}
-            </Paragraph>
             <Paragraph>
               <Text strong>
                 #{this.props.tokenId}
               </Text>
             </Paragraph>
+            <Paragraph>
+              {uri} {pendingSpinner}
+            </Paragraph>            
           </Typography>
         </Card>
     );
@@ -50,7 +50,7 @@ Collectible.contextTypes = {
   drizzle: PropTypes.object,
 };
 Collectible.propTypes = {
-  tokenId: PropTypes.number,
+  tokenId: PropTypes.string,
   contracts: PropTypes.object, // eslint-disable-line
 };
 Collectible.defaultProps = {

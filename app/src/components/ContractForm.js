@@ -43,7 +43,6 @@ class ContractForm extends Component {
         break;
       }
     }
-
     this.state = initialState;
   }
 

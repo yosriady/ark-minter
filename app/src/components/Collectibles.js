@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Collectible } from '../components';
 
-class CollectiblesWallet extends Component {
+class Collectibles extends Component {
   constructor(props, context) {
     super(props);
 
@@ -26,7 +26,7 @@ class CollectiblesWallet extends Component {
     const tokensOfOwner = contract.tokensOfOwner[this.tokensOfOwner].value;
     const collectibles = tokensOfOwner.map(tokenId => {
       return (
-        <Collectible tokenId={tokenId} hideOwner />
+        <Collectible key={tokenId} tokenId={tokenId} hideOwner />
       )
     });
     const hasNoCollectibles = (tokensOfOwner.length <= 0);
@@ -39,18 +39,18 @@ class CollectiblesWallet extends Component {
   }
 }
 
-CollectiblesWallet.contextTypes = {
+Collectibles.contextTypes = {
   drizzle: PropTypes.object,
 };
-CollectiblesWallet.propTypes = {
+Collectibles.propTypes = {
   account: PropTypes.string,
   contracts: PropTypes.object, // eslint-disable-line
 };
-CollectiblesWallet.defaultProps = {
+Collectibles.defaultProps = {
   account: null,
 };
 
 const mapStateToProps = state => ({
   contracts: state.contracts,
 });
-export default drizzleConnect(CollectiblesWallet, mapStateToProps);
+export default drizzleConnect(Collectibles, mapStateToProps);

@@ -6,7 +6,9 @@ import {
   ContractData,
   ContractForm,
 } from "drizzle-react-components";
-import { Collectibles } from '../components';
+import { 
+  Collectibles 
+} from '../components';
 
 const Homepage = ({ accounts }) => (
   <div className="App">
@@ -18,17 +20,8 @@ const Homepage = ({ accounts }) => (
 
     <div className="section">
       <h2>Mint and view your Collectibles</h2>
-      <ContractForm contract="Collectibles" method="mintWithTokenURI" />
+      <ContractForm contract="Collectibles" method="mintWithTokenURI" methodArgs={[accounts[0], Math.random(0, 100), '']} />
       <Collectibles account={accounts[0]} />
-    </div>    
-
-    <div className="section">
-      <h2>Simple Storage</h2>
-      <p>
-        <strong>Stored Value: </strong>
-        <ContractData contract="SimpleStorage" method="storedData" />
-      </p>
-      <ContractForm contract="SimpleStorage" method="set" />
     </div>
   </div>
 );
