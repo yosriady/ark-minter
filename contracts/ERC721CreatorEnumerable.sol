@@ -1,8 +1,8 @@
 pragma solidity 0.5.8;
 
-import "openzeppelin-solidity/contracts/token/ERC721/ERC721.sol";
+import "openzeppelin-solidity/contracts/token/ERC721/ERC721Enumerable.sol";
 
-contract ERC721CreatorEnumerable is ERC721 {
+contract ERC721CreatorEnumerable is ERC721Enumerable {
   // Mapping from creator to list of token IDs
   mapping(address => uint[]) private _createdTokens;
 
@@ -38,6 +38,10 @@ contract ERC721CreatorEnumerable is ERC721 {
     return _tokensOfCreator(creator);
   }
 
+  function tokensOfOwner(address owner) public view returns (uint[] memory) {
+    return _tokensOfOwner(owner);
+  }
+
   /**
   * @dev Gets the list of token IDs of the requested creator.
   * @param creator address who created the tokens
@@ -47,11 +51,11 @@ contract ERC721CreatorEnumerable is ERC721 {
     return _createdTokens[creator];
   }
 
-  function _mint(address account, uint256 value) internal {
-    address creator = msg.sender; // Track a Creator's tokens
-    _createdTokens[creator].push(value);
-    _tokenCreator[value] = creator;
+  // function _mint(address account, uint256 value) internal {
+  //   address creator = msg.sender; // Track a Creator's tokens
+  //   _createdTokens[creator].push(value);
+  //   _tokenCreator[value] = creator;
 
-    super._mint(account, value);
-  }
+  //   super._mint(account, value);
+  // }
 }
