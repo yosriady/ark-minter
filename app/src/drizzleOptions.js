@@ -1,4 +1,4 @@
-import SimpleStorage from "./contracts/SimpleStorage.json";
+
 import Collectibles from "./contracts/Collectibles.json";
 
 const options = {
@@ -9,9 +9,8 @@ const options = {
       url: "ws://127.0.0.1:9545",
     },
   },
-  contracts: [SimpleStorage, Collectibles],
+  contracts: [Collectibles],
   events: {
-    SimpleStorage: ["StorageSet"],
     Collectibles: ["Minted"],
   },
   polls: {

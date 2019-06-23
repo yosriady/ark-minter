@@ -1,7 +1,7 @@
-// require('dotenv').config();
+require('dotenv').config();
 const path = require("path");
-// const HDWalletProvider = require('truffle-hdwallet-provider');
-// const RINKEBY_ENDPOINT = `https://rinkeby.infura.io/v3/${process.env.INFURA_ACCESS_TOKEN}`;
+const HDWalletProvider = require('truffle-hdwallet-provider');
+const RINKEBY_ENDPOINT = `https://rinkeby.infura.io/v3/${process.env.INFURA_ACCESS_TOKEN}`;
 
 module.exports = {
   // See <http://truffleframework.com/docs/advanced/configuration> to customize your Truffle configuration!
@@ -13,13 +13,13 @@ module.exports = {
       network_id: '*', // 5777
       gas: 8000000,
     },
-    // rinkeby: {
-    //   provider: () => new HDWalletProvider(process.env.MNEMONIC, RINKEBY_ENDPOINT),
-    //   network_id: 4,
-    //   skipDryRun: true,
-    //   gasPrice: 20000000000, // 20 gwei
-    //   gas: 7000000,
-    // },
+    rinkeby: {
+      provider: () => new HDWalletProvider(process.env.MNEMONIC, RINKEBY_ENDPOINT),
+      network_id: 4,
+      skipDryRun: true,
+      gasPrice: 20000000000, // 20 gwei
+      gas: 7000000,
+    },
   },
   compilers: {
     solc: {

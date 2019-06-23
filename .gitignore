@@ -10,7 +10,7 @@ yarn-error.log*
 
 
 # app/src/contracts
-app/src/contracts
+# app/src/contracts
 
 # Runtime data
 pids
