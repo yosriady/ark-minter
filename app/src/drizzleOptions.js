@@ -1,4 +1,5 @@
 import SimpleStorage from "./contracts/SimpleStorage.json";
+import Collectibles from "./contracts/Collectibles.json";
 
 const options = {
   web3: {
@@ -8,9 +9,10 @@ const options = {
       url: "ws://127.0.0.1:9545",
     },
   },
-  contracts: [SimpleStorage],
+  contracts: [SimpleStorage, Collectibles],
   events: {
     SimpleStorage: ["StorageSet"],
+    Collectibles: ["Minted"],
   },
   polls: {
     // set polling interval to 30secs so we don't get buried in poll events

@@ -5,21 +5,24 @@ import {
   ContractData,
   ContractForm,
 } from "drizzle-react-components";
+import Collectibles from './components/Collectibles';
 
-import logo from "./logo.png";
-
-export default () => (
+export default ({ accounts }) => (
   <div className="App">
     <ToastContainer />
     <div>
-      <img src={logo} alt="drizzle-logo" />
-      <h1>Drizzle Event Example</h1>
-      <p>Connect and react to Solidity Contract events by hooking into Drizzle Redux state</p>
+      <h1><ContractData contract="Collectibles" method="name" /></h1>
+      <p>Hello, {accounts[0]}</p>
     </div>
 
     <div className="section">
-      <h2>SimpleStorage with event</h2>
-      <p>Change the value to invoke a contract event</p>
+      <h2>Mint and view your Collectibles</h2>
+      <ContractForm contract="Collectibles" method="mintWithTokenURI" />
+      <Collectibles account={accounts[0]} />
+    </div>    
+
+    <div className="section">
+      <h2>Simple Storage</h2>
       <p>
         <strong>Stored Value: </strong>
         <ContractData contract="SimpleStorage" method="storedData" />
