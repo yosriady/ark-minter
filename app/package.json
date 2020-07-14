@@ -10,17 +10,20 @@
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-redux": "^6.0.0",
-    "react-scripts": "2.1.3",
+    "react-scripts": "3.3.0",
     "react-toastify": "^4.5.2",
     "redux": "^4.0.1",
-    "redux-saga": "^1.0.1"
+    "redux-saga": "^1.0.1",
+    "snyk": "^1.361.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "now-dev": "react-scripts start",
-    "now-build": "react-scripts build"
+    "now-build": "react-scripts build",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -30,5 +33,6 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "snyk": true
 }
